@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StayEase</title>
+    <!-- Link to the manifest -->
+    <link rel="manifest" href="./manifest.json" />
+    <!-- Favicon -->
+    <link rel="icon" href="./icons/icon-192x192.png" type="image/png" />
+  </head>
+  <body>
+    <h1>Welcome to StayEase</h1>
+    <p>
+      This is a Progressive Web App for room rentals and shared accommodations.
+    </p>
+
+    <!-- Service Worker registration script -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./logic.js")
+          .then((registration) => {
+            console.log(
+              "Service Worker registered with scope:",
+              registration.scope
+            );
+          })
+          .catch((error) => {
+            console.error("Service Worker registration failed:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
