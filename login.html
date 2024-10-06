@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - StayEase</title>
+
+    <!-- Font Awesome for eye icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="output.css" />
+
+    <style>
+      /* Hide default password visibility toggle in some browsers */
+      input[type="password"]::-ms-reveal,
+      input[type="password"]::-ms-clear {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="flex min-h-screen items-center justify-center bg-gray-100">
+    <div
+      class="bg-white shadow-lg rounded-lg overflow-hidden flex w-full max-w-3xl"
+    >
+      <!-- Left Side Image -->
+      <div class="w-1/2 flex items-center justify-center">
+        <div
+          class="bg-cover bg-center"
+          style="
+            background-image: url('/Logo/login.png');
+            width: 650px;
+            height: 350px;
+            background-size: contain;
+            background-repeat: no-repeat;
+          "
+        ></div>
+      </div>
+
+      <!-- Right Side Login Form -->
+      <div class="w-1/2 flex items-center justify-center p-8">
+        <div class="w-full">
+          <h2 class="text-2xl font-Nrj-fonts font-semibold text-center mb-6">
+            Login to StayEase
+          </h2>
+          <form id="loginForm">
+            <!-- Email Input Field -->
+            <div class="mb-4">
+              <label
+                for="email"
+                class="block text-sm font-Nrj-fonts font-medium text-gray-700"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                placeholder="user@stayease.com"
+                class="font-Nrj-fonts mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-primary"
+                required
+              />
+            </div>
+
+            <!-- Password Input Field with Toggle -->
+            <div class="mb-4 relative">
+              <label
+                for="password"
+                class="block font-Nrj-fonts text-sm font-medium text-gray-700"
+                >Password</label
+              >
+              <div class="flex items-center">
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Minimum 6 characters"
+                  minlength="8"
+                  class="font-Nrj-fonts mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-primary pr-10"
+                  required
+                />
+                <span
+                  id="togglePassword"
+                  class="absolute right-3 cursor-pointer"
+                >
+                  <i class="fas fa-eye opacity-70" id="eyeIcon"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Login Button -->
+            <button
+              type="submit"
+              class="w-full bg-blue-500 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded font-Nrj-fonts transition-all duration-200 hover:text-lg"
+            >
+              Login
+            </button>
+          </form>
+
+          <!-- Forgot Password Link -->
+          <p class="mt-4 text-center">
+            <a
+              href="forgotpassword.html"
+              class="text-blue-500 hover:underline font-Nrj-fonts"
+              >Forgot your password?</a
+            >
+          </p>
+
+          <!-- Divider for Alternative Options -->
+          <div class="flex flex-row p-1">
+            <hr class="w-36 h-[2px] bg-gray-200 rounded-full mt-3" />
+            <p class="font-Nrj-fonts font-medium text-gray-400 pl-2 pr-2">Or</p>
+            <hr class="w-36 h-[2px] bg-gray-200 rounded-full mt-3" />
+          </div>
+
+          <!-- Sign Up Link -->
+          <p class="mt-2 text-center font-Nrj-fonts">
+            Don't have an account?
+            <a
+              href="signup.html"
+              class="text-blue-500 hover:underline font-Nrj-fonts"
+              >Sign up</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get references to password toggle elements
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordInput = document.getElementById("password");
+      const eyeIcon = document.getElementById("eyeIcon");
+
+      // Add click event to toggle password visibility
+      togglePassword.addEventListener("click", () => {
+        // Toggle the password visibility
+        const type =
+          passwordInput.getAttribute("type") === "password"
+            ? "text"
+            : "password";
+        passwordInput.setAttribute("type", type);
+
+        // Toggle the eye icon
+        eyeIcon.classList.toggle("fa-eye");
+        eyeIcon.classList.toggle("fa-eye-slash");
+      });
+    </script>
+  </body>
+</html>

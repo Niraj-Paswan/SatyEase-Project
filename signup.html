@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - StayEase</title>
+    <!-- Font Awesome CSS for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="output.css" />
+
+    <style>
+      /* Hide the default browser password eye icon */
+      input[type="password"]::-ms-reveal,
+      input[type="password"]::-ms-clear {
+        display: none; /* Prevent the default clear button in IE */
+      }
+
+      input[type="password"]::-webkit-credentials-auto-fill-button {
+        display: none; /* Prevent the auto-fill button in WebKit browsers */
+      }
+
+      input[type="password"] {
+        -webkit-appearance: none; /* Prevent default icon in WebKit browsers */
+      }
+    </style>
+  </head>
+  <body class="flex min-h-screen items-center justify-center bg-gray-100">
+    <div
+      class="bg-white shadow-lg rounded-lg overflow-hidden flex w-full max-w-3xl"
+    >
+      <!-- Left Side Image -->
+      <div class="w-1/2 flex items-center justify-center">
+        <div
+          class="bg-cover bg-center"
+          style="
+            background-image: url('/Logo/signup.png');
+            width: 650px;
+            height: 350px;
+            background-size: contain;
+            background-repeat: no-repeat;
+          "
+        ></div>
+      </div>
+
+      <!-- Right Side Signup Form -->
+      <div class="w-1/2 flex items-center justify-center p-8">
+        <div class="w-full">
+          <h2 class="text-2xl font-Nrj-fonts font-semibold text-center mb-6">
+            Create an Account
+          </h2>
+
+          <!-- Signup Form -->
+          <form id="signup-form">
+            <!-- Email Input -->
+            <div class="mb-4">
+              <label
+                for="user-email"
+                class="block text-sm font-Nrj-fonts font-medium text-gray-700"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="user-email"
+                placeholder="user@stayease.com"
+                class="font-Nrj-fonts mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-primary"
+                required
+              />
+            </div>
+
+            <!-- Password Input -->
+            <div class="mb-4 relative">
+              <label
+                for="user-pass"
+                class="block font-Nrj-fonts text-sm font-medium text-gray-700"
+                >Password</label
+              >
+              <div class="flex items-center">
+                <input
+                  type="password"
+                  placeholder="Minimum 6 characters"
+                  id="user-pass"
+                  class="font-Nrj-fonts mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-primary pr-10"
+                  required
+                />
+                <span id="toggle-pass" class="absolute right-3 cursor-pointer">
+                  <i class="fas fa-eye opacity-70" id="eye-pass"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Confirm Password Input -->
+            <div class="mb-4 relative">
+              <label
+                for="confirm-pass"
+                class="block font-Nrj-fonts text-sm font-medium text-gray-700"
+                >Confirm Password</label
+              >
+              <div class="flex items-center">
+                <input
+                  type="password"
+                  placeholder="Minimum 6 characters"
+                  id="confirm-pass"
+                  class="font-Nrj-fonts mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-primary pr-10"
+                  required
+                />
+                <span
+                  id="toggle-confirm"
+                  class="absolute right-3 cursor-pointer"
+                >
+                  <i class="fas fa-eye opacity-70" id="eye-confirm"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Sign Up Button -->
+            <button
+              type="submit"
+              class="w-full bg-blue-500 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded font-Nrj-fonts transition-all duration-200 hover:text-lg"
+            >
+              Sign Up
+            </button>
+          </form>
+
+          <!-- Separator -->
+          <div class="flex flex-row mt-4">
+            <hr class="w-36 h-[2px] bg-gray-200 rounded-full mt-3" />
+            <p class="font-Nrj-fonts font-medium text-gray-400 pl-2 pr-2">Or</p>
+            <hr class="w-36 h-[2px] bg-gray-200 rounded-full mt-3" />
+          </div>
+
+          <!-- Already have an account prompt -->
+          <p class="mt-4 text-center">
+            <span class="text-black font-Nrj-fonts"
+              >Already have an account?</span
+            >
+            <a
+              href="login.html"
+              class="text-blue-500 hover:underline font-Nrj-fonts"
+              >Login</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get elements for toggling password visibility
+      const togglePass = document.getElementById("toggle-pass");
+      const passInput = document.getElementById("user-pass");
+      const eyePass = document.getElementById("eye-pass");
+
+      const toggleConfirm = document.getElementById("toggle-confirm");
+      const confirmInput = document.getElementById("confirm-pass");
+      const eyeConfirm = document.getElementById("eye-confirm");
+
+      // Toggle Password visibility
+      togglePass.addEventListener("click", () => {
+        const type =
+          passInput.getAttribute("type") === "password" ? "text" : "password"; // Determine the current type
+        passInput.setAttribute("type", type); // Set the new type
+        eyePass.classList.toggle("fa-eye"); // Toggle eye icon
+        eyePass.classList.toggle("fa-eye-slash");
+      });
+
+      // Toggle Confirm Password visibility
+      toggleConfirm.addEventListener("click", () => {
+        const type =
+          confirmInput.getAttribute("type") === "password"
+            ? "text"
+            : "password"; // Determine the current type
+        confirmInput.setAttribute("type", type); // Set the new type
+        eyeConfirm.classList.toggle("fa-eye"); // Toggle eye icon
+        eyeConfirm.classList.toggle("fa-eye-slash");
+      });
+    </script>
+  </body>
+</html>
